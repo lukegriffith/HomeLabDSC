@@ -25,6 +25,7 @@ Configuration ChocoPackages {
         [pscustomobject]@{ Package = 'sysinternals' ; Version = 2016.08.29 }
         [pscustomobject]@{ Package = 'VisualStudioCode' ; Version = 1.4 }
         [pscustomobject]@{ Package = 'vlc' ; Version = 2.2.4 }
+        [pscustomobject]@{ Package = 'f.lux' ; Version = 3.10.20160828 }
     )
 
     $Packages | ForEach-Object -Process { 

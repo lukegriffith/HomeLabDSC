@@ -4,7 +4,7 @@ Configuration HyperVConfiguration {
 
     Import-DscResource -ModuleName 'xHyper-V'
     Import-DscResource –ModuleName 'PSDesiredStateConfiguration'
-
+    
     file temp {
 
         DestinationPath = "C:\Temp" 
@@ -55,21 +55,23 @@ Configuration HyperVConfiguration {
     }
 
     
-    xVHD 2016VHD {
+    xVHD TPVHD {
         
-        Name = "2016tp.vhdx"
+        Name = "2016-DC.vhdx"
         Generation = "Vhdx"
         Path = "D:\Hyper-V\vhd"
+        MaximumSizeBytes = 1.27e+11
+
     }
 
 
     xVMHyperV 2016tp { 
         
-        Name = "2016tp"
-        VhdPath = "D:\Hyper-V\vhd\2016tp.vhdx"
+        Name = "2016-DC"
+        VhdPath = "D:\Hyper-V\vhd\2016-DC.vhdx"
         Ensure = "Present"
         SwitchName = "VM-Network"
-
+        DependsOn = "[xVHD]TPVHD"
     }
 
 
