@@ -3,7 +3,7 @@
 Configuration ChocoPackages {
 
 
-    Import-DSCResource -ModuleName "cChoco"
+    Import-DSCResource -ModuleName "cChoco" -ModuleVersion 2.2.0.63
 
     cChocoInstaller Choco {
         InstallDir = "C:\Temp"
