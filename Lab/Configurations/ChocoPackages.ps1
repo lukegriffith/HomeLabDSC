@@ -26,6 +26,10 @@ Configuration ChocoPackages {
         [pscustomobject]@{ Package = 'VisualStudioCode' ; Version = 1.4 }
         [pscustomobject]@{ Package = 'vlc' ; Version = 2.2.4 }
         [pscustomobject]@{ Package = 'f.lux' ; Version = 3.10.20160828 }
+        [pscustomobject]@{ Package = 'spotify' ; Version = 1.0.33.106 }
+        [pscustomobject]@{ Package = 'steam' ; Version = 1.0.0.5 }
+
+        
     )
 
     $Packages | ForEach-Object -Process { 

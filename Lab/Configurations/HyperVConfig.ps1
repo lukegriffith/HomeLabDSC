@@ -65,7 +65,7 @@ Configuration HyperVConfiguration {
     }
 
 
-    xVMHyperV 2016tp { 
+    xVMHyperV 2016-dc { 
         
         Name = "2016-DC"
         VhdPath = "D:\Hyper-V\vhd\2016-DC.vhdx"
@@ -74,8 +74,65 @@ Configuration HyperVConfiguration {
         DependsOn = "[xVHD]TPVHD"
     }
 
+    xVHD wksVHD {
+        
+        Name = "wks.vhdx"
+        Generation = "Vhdx"
+        Path = "D:\Hyper-V\vhd"
+        MaximumSizeBytes = 2.5e+10
+
+    }
 
 
+    xVMHyperV wks { 
+        
+        Name = "wks"
+        VhdPath = "D:\Hyper-V\vhd\wks.vhdx"
+        Ensure = "Present"
+        SwitchName = "VM-Network"
+        DependsOn = "[xVHD]wksVHD"
+    }
+
+
+
+    xVHD rrasVHD {
+        
+        Name = "rras.vhdx"
+        Generation = "Vhdx"
+        Path = "D:\Hyper-V\vhd"
+        MaximumSizeBytes = 2.5e+10
+
+    }
+
+
+    xVMHyperV 2016core { 
+        
+        Name = "2016core"
+        VhdPath = "D:\Hyper-V\vhd\16c.vhdx"
+        Ensure = "Present"
+        SwitchName = "External-Switch", "VM-Network"
+        DependsOn = "[xVHD]2016coreVHD"
+    }
+
+
+        xVHD 2016coreVHD {
+        
+        Name = "16c.vhdx"
+        Generation = "Vhdx"
+        Path = "D:\Hyper-V\vhd"
+        MaximumSizeBytes = 2.5e+10
+
+    }
+
+
+    xVMHyperV rras { 
+        
+        Name = "rras"
+        VhdPath = "D:\Hyper-V\vhd\rras.vhdx"
+        Ensure = "Present"
+        SwitchName = "External-Switch", "VM-Network"
+        DependsOn = "[xVHD]rrasVHD"
+    }
 
 
 

@@ -18,7 +18,7 @@ Configuration HomeLab {
 
     HyperVConfiguration
 
-    #ChocoPackages
+    ChocoPackages
 
 }
 
